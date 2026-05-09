@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Staffora</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #2563eb;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #334155;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      background: #f8fafc;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 6px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .view-link {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+      color: #2563eb;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .view-link:hover {
+      text-decoration: underline;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #2563eb;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <section class="brand">
+      <div class="logo">S</div>
+      <h1>Staffora</h1>
+      <p class="subtitle">Employee Registration Platform</p>
+    </section>
+
+    <span class="badge">New Applicant Form</span>
+
+    <form action="/submit" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="nama">Nama Lengkap</label>
+        <input
+          type="text"
+          id="nama"
+          name="nama"
+          placeholder="Contoh: Budi Santoso"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Alamat Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Contoh: budi@email.com"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="file">Dokumen Pelamar</label>
+        <input
+          type="file"
+          id="file"
+          name="file"
+          accept="image/*,.pdf"
+          required
+        />
+      </div>
+
+      <button type="submit">Submit Application</button>
+    </form>
+
+    <a class="view-link" href="/applicants">Lihat Daftar Applicants</a>
+
+    <p class="note">
+      Staffora menyimpan data pelamar ke database dan mengelola dokumen melalui Amazon S3 Object Storage.
+    </p>
+  </main>
+</body>
+</html>

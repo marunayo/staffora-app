@@ -1,4 +1,4 @@
-name: Build and Push Docker Image to Amazon ECR
+name: CI/CD Deployment to AWS App Runner
 
 on:
   push:
@@ -9,8 +9,8 @@ env:
   IMAGE_TAG: latest
 
 jobs:
-  build-and-push:
-    name: Build and Push to ECR
+  build-and-deploy:
+    name: Build, Push, and Deploy to App Runner
     runs-on: ubuntu-latest
 
     steps:
@@ -39,3 +39,8 @@ jobs:
       - name: Push Docker Image to Amazon ECR
         run: |
           docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:$IMAGE_TAG
+
+      - name: Deploy to AWS App Runner
+        run: |
+          aws apprunner start-deployment \
+          --service-arn ${{ secrets.APP_RUNNER_SERVICE_ARN }}
